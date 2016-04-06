@@ -1,0 +1,5 @@
+Demo link : http://tinyurl.com/datavizproject
+
+Note:
+1. Use Mozilla Firefox browser with a valid internet connection.
+2. Use 1920 * 1048 resolution display to view visualization. 

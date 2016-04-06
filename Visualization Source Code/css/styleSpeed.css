@@ -1,0 +1,94 @@
+.unselectable {
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* css formats for the gauge */
+        .gauge1 .domain {
+            stroke-width: 3px;
+            stroke: #000;
+        }
+
+        .gauge1 .tick line {
+            stroke: #000;
+            stroke-width: 2px;
+        }
+        
+        .gauge1 line {
+            stroke: #000;
+        }
+
+        .gauge1 .arc, .gauge .cursor {
+            opacity: 0;
+			
+        }
+
+        .gauge1 .major {
+            fill: #000;
+            font-size: 10px;
+            font-family: 'Play', verdana, sans-serif;
+            font-weight: normal;
+        }
+        
+        .gauge1 .indicator {
+			stroke-linecap: "round";
+            stroke:#ff5773 ;
+            fill: #000;
+            stroke-width: 3px;
+		}
+
+        .gauge2 .domain {
+            stroke-width: 3px;
+            stroke: #000;
+        }
+
+        .gauge2 .tick line {
+            stroke: #000;
+            stroke-width: 2px;
+        }
+        
+        .gauge2 line {
+            stroke: #000;
+        }
+
+        .gauge2 .arc, .gauge2 .cursor {
+            opacity: 0;
+        }
+
+        .gauge2 .major {
+            fill: #000;
+            font-size: 10px;
+            font-family: 'Play', verdana, sans-serif;
+            font-weight: normal;
+        }
+        
+        .gauge2 .indicator {
+            stroke: #ffd677;
+            stroke-width: 4px;
+        }
+
+        /* css formats for the segment display */
+       .segdisplay2 .on {
+            fill: #00FFFF;
+
+        }
+
+        .segdisplay2 .off {
+            fill: #00;
+            opacity: 0.15;
+        }
+
+        .segdisplay .on {
+            fill: #FF0000;
+
+        }
+
+        .segdisplay .off {
+            fill: #FF0000;
+            opacity: 0.15;
+        }
+		
+		

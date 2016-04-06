@@ -1,0 +1,231 @@
+  <!DOCTYPE html>
+  <meta charset="utf-8">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+  <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+  <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+  <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+  <script type="text/javascript" src="js/iopctrl.js"></script>
+  <script type="text/javascript" src="js/speed.js"></script>
+  <script type="text/javascript" src="js/scatterplot.js"></script>
+  <script type="text/javascript" src="js/UserBarGraph.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="js/display.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/styleSpeed.css" rel="stylesheet">
+  </head>
+  <body onload="functionPageLoad();">
+
+  <div data-role="page" id="pageone">
+     <div data-role="panel" id="myPanel" data-display="overlay" style="background: #333; opacity:0.8 "> 
+      <ul id="tags">
+         <ul id="tags">
+        <li id="android" value="android" onclick="display(1)">android</li>
+        <li id="arraylist" value="arraylist" onclick="display(2)">arraylist</li>
+        <li id="arrays" value="arrays" onclick="display(3)">arrays</li>
+        <li id="eclipse" value="eclipse" onclick="display(4)">eclipse</li>
+        <li id="generics" value="generics" onclick="display(5)">generics</li>
+        <li id="hibernate" value="hibernate" onclick="display(6)">hibernate</li>  
+        <li id="html" value="html" onclick="display(7)">html</li>
+        <li id="jar" value="jar" onclick="display(8)">jar</li>
+        <li id="java-ee" value="java-ee" onclick="display(9)">java-ee</li>
+        <li id="javascript" value="javascript" onclick="display(10)">javascript</li>
+        <li id="jdbc" value="jdbc" onclick="display(11)">jdbc</li>
+        <li id="jpa" value="jpa" onclick="display(12)">jpa</li>
+        <li id="json" value="json" onclick="display(13)">json</li>
+        <li id="jsp" value="jsp" onclick="display(14)">jsp</li>
+        <li id="maven" value="maven" onclick="display(15)">maven</li>
+        <li id="multithreading" value="multithreading" onclick="display(16)">multithreading</li>
+        <li id="mysql" value="mysql" onclick="display(17)">mysql</li>
+        <li id="netbeans" value="netbeans" onclick="display(18)">netbeans</li>
+        <li id="regex" value="regex" onclick="display(19)">regex</li>
+        <li id="servlets" value="servlets" onclick="display(20)">servlets</li>
+        <li id="sockets" value="sockets" onclick="display(21)">sockets</li>
+        <li id="spring" value="spring" onclick="display(22)">spring</li>
+        <li id="spring-mvc" value="spring-mvc" onclick="display(23)">spring-mvc</li>
+        <li id="sql" value="sql" onclick="display(24)">sql</li>
+        <li id="string" value="string" onclick="display(25)">string</li>
+        <li id="swing" value="swing" onclick="display(26)">swing</li>
+        <li id="tomcat" value="tomcat" onclick="display(27)">tomcat</li>
+        <li id="user-interface" value="user-interface" onclick="display(28)">user-interface</li>
+        <li id="web-services" value="sql" onclick="display(29)">web-services</li>
+        <li id="xml" value="xml" onclick="display(30)">xml</li>
+    
+      </ul>
+    </div> 
+
+     <div data-role="header" style="height:45px">
+      <center><table>
+        <tr>
+          <td>
+        <img src="images/so.png" height=40px style="padding-bottom:10px"></img>
+        <td>
+          <label style="font-size:30px;padding-top:10px;font-family:'Times New Roman', Georgia, Serif;" ><b>Java Analytics</b></label>
+        </td>
+      </tr>
+    </table></center>
+      
+       
+       <a href="#myPanel" style="height:16px;"><label >☰</label></a>
+     </div> 
+   
+     <div data-role="main" class="ui-content"> 
+    <div class="svgcontainer" style="background-color:white">
+    <label id="technologyName" style="text-align:left; font-weight:bold; font-size:28px; padding-left:15px; margin-top:0px; margin-bottom:0px; text-transform: capitalize;fontWeight:2000;fontFamily:calibri"></label>
+   <label id="scatterPlotTitle" style="font-size:14px; padding-left:15px; padding-top:0px"></label>
+   <label style="font-size:10px; padding-left:15px;"> Expert score: (0.058975 * answers + 0.678985 * accepted answers + 0.343295*votes) * accept rate</label>
+   <label style="font-size:10px; padding-left:15px;"> Click on legend to filter reputation</label>
+    
+    <div id="scatterPlot" style="margin-bottom:0px;"></div>
+
+     <div data-role="main" class="ui-content">
+
+    <div>
+      <table>
+        <tr>
+          <td> <label style="text-align:center; padding-top: 7px;">Score: </label></td>
+         
+          <td><div id="range-slider" data-role="rangeslider" style="width:650px; margin-top:0px;">
+          <input type="slider" name="rep-min" id="rep-min" value="0" min="1" max="1800" >
+          <input type="slider" name="rep-max" id="rep-max" value="800" min="1" max="1800" >
+          </div></td>
+         
+          </tr> 
+       </table>
+      </div>
+    </div>
+  </div>
+  <div class="svgcontainer" id="userGraphMain" >
+    <div style="background-color:#f9ffe7">
+    <label id="username" style="text-align: center;fontFamily:calibri;font-weight:bold; text-decoration:underline"></label>
+     <div id="speedometer" ></div>
+   </div>
+    <label id="speedTitle" style="text-align:center;"></label>
+    <div style="background-color:#f9ffe7">
+    <div id="userGraph" align="center"></div>
+   <label id="graphTitle" style="text-align:center;"></label>
+  </div>
+  </div>
+  <div id="overview">
+  <h2>
+  <p>Visualization Overview</p><p>This visualization presents the information about Stackoverflow.com Java users on 30 tags. It shows the expertise of user on a topic with information about their contribution activity over the period of one year.</p> <p>This visualization is particularly helpful for recruiting agencies and also for individuals who are trying to compete with others and wants to stay updated about their standing in community.</p> </h2></div> 
+   </div>
+
+  <div data-role="footer">
+      <h1>Data Source: Stackoverflow.com</h1>
+    </div> 
+  </div> 
+
+  <script>
+  var filteredData = null;
+  var UserData = null;
+  var completeData = null;
+  var maxScoreByTag,maxRepByTag;
+   var clickTip;
+   var tagNameSelected = "android";
+    
+
+  var selectedUserName;
+
+
+  var color = d3.scale.category20();
+
+  var svgScatterPlot,svgUserGraph,svg1,svg2,svg3 ;
+
+  var zoom = d3.behavior.zoom()
+      .scaleExtent([1, 10])
+      .on("zoom", zoomed);
+  // attach all the listners on page load
+  function functionPageLoad(){
+      $('#rep-min').change(function() {
+        refreshScatterPlot();
+      });
+      $('#rep-max').change(function() {
+        refreshScatterPlot();
+      });
+    
+      readUserData();
+      filterByTag(tagNameSelected);
+      refreshScatterPlot();
+  }
+  function refreshScatterPlot(){
+    removeClickTip();
+    var minVal = document.getElementById("rep-min").value;
+    var maxVal = document.getElementById("rep-max").value;
+    removeDetailView();
+    hideUserGraph();
+    loadScatterPlot(minVal,maxVal);
+  }
+  function removeDetailView(){
+   
+  }
+
+  function zoomed() {
+    svgScatterPlot.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+  }
+  function filterByTag(tagType){
+      removeClickTip();
+    d3.csv("datafiles//StackCSV25.csv", function(error, data) {
+        completeData = data;
+        var Tags = [];
+        for(key in data){
+          Tags.push(data[key].Tag);
+        }
+        var fltData = d3.nest().key(function(d){ return d.Tag;}).map(data,d3.map);
+        var uTags = d3.set(Tags).values();
+        
+        filteredData = fltData.get(tagType);
+        var reputationRange=[];
+        var scoreRange=[];
+        for(var i=0;i<filteredData.length;i++){
+          reputationRange[i] = parseInt(filteredData[i].Reputation);
+          scoreRange[i] = parseFloat(filteredData[i].Score);
+        }
+        var maxRep = Math.max.apply(null,reputationRange);
+        maxRepByTag = maxRep;
+        maxScoreByTag = Math.max.apply(null,scoreRange);
+        var minScoreByTag = Math.min.apply(null,scoreRange);
+        setMaxValue(Math.ceil(maxScoreByTag));
+       
+       // setMinValueTextBox(0);
+        //setMaxValueTextBox(maxScoreByTag);
+        $('#technologyName').text(tagNameSelected);   
+
+      $('#scatterPlotTitle').text("This plot shows distribution of user expertise level in " + tagNameSelected);
+        loadScatterPlot(0,maxScoreByTag);
+      });
+  }
+
+  function setMaxValue(val){
+     $('#rep-max').val(val);
+    $("#rep-max").attr("max", val).slider("refresh");
+  }
+
+  function readUserData(){
+  d3.csv("datafiles//userIDMapping.csv", function(error, data) {
+    UserData = data;
+   });
+
+  }
+  function hideOverview(){
+ document.getElementById('overview').style.display="none";
+ }
+
+function showOverview(){
+ document.getElementById('overview').style.display="";
+ }
+ 
+ function hideUserGraph(){
+ document.getElementById('userGraphMain').style.display="none";
+ }
+
+function showUserGraph(){
+ document.getElementById('userGraphMain').style.display="";
+ }
+
+  </script>

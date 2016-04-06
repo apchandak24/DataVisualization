@@ -1,0 +1,114 @@
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+body {
+  font: 10px sans-serif;
+  background-color: #b0c4de;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.dot {
+  stroke: #000;
+}
+.svgcontainer {
+  
+  float: left;
+}
+.selected {
+    fill: red;
+}
+
+ul {
+    list-style-type: none;
+  font-size:16px;
+  margin: 0;
+    padding: 0; }
+  
+  li{
+  color:white;
+  text-transform: uppercase;
+    opacity: 1;
+    cursor: pointer;
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in; }
+    
+  li:hover {
+      opacity: 1;
+      color: #29D4E8; }
+    
+  .sidebar
+  {
+ -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: fixed;
+  top: 0px;
+  right: 30;
+  bottom: 0px;
+  left: -190px;
+  width: 120px;
+  padding: 30px;
+  background: #000;
+  z-index: 2;}
+
+.grid .tick {
+    stroke: lightblue;
+    stroke-dasharray:3,3;
+    opacity: 0.5;
+}
+
+.grid .label{
+  stroke: black;
+
+}
+
+.grid .text{
+  stroke: black;
+  
+}
+
+.grid path {
+      stroke-width: 1;
+}
+
+
+#userGraph{
+
+}
+
+#overview{
+    color: maroon;
+    margin-left: 40px;
+  margin-top: 100px;
+  
+} 
